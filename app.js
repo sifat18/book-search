@@ -2,6 +2,7 @@
 console.log('connected');
 // no image pic
 const defaultPic = 'default-pic.jpg'
+const bookDisplay = document.getElementById('searchResults');
 
 const statusText = document.getElementById('updateStatus');
 statusText.style.display = 'none';
@@ -25,6 +26,7 @@ const statusUpdate = (searching, count = 0) => {
     // no result found
     else {
         statusText.style.display = 'block';
+        bookDisplay.textContent = '';
 
         statusText.textContent = 'No Results for this search';
 
@@ -53,7 +55,6 @@ const bookData = (data) => {
 
     // defining img url
     const imageURL = 'https://covers.openlibrary.org/b/id/';
-    const bookDisplay = document.getElementById('searchResults');
     bookDisplay.textContent = '';
     // looping over the data
     data?.forEach(info => {
