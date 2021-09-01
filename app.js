@@ -12,6 +12,7 @@ const statusUpdate = (searching, count = 0) => {
     // while loading
     if (searching && count == 0) {
         statusText.style.display = 'block';
+        statusText.textContent = `Loading...`;
 
     }
     // when result found
@@ -23,6 +24,8 @@ const statusUpdate = (searching, count = 0) => {
     }
     // no result found
     else {
+        statusText.style.display = 'block';
+
         statusText.textContent = 'No Results for this search';
 
     }
@@ -41,7 +44,7 @@ const getItem = () => {
     searchItem.value = '';
     fetch(url)
         .then(res => res.json())
-        .then(data => data ? bookData(data.docs) : statusUpdate(false));
+        .then(data => data.docs.length === 0 ? statusUpdate(false) : bookData(data.docs));
 
 }
 
@@ -56,14 +59,15 @@ const bookData = (data) => {
     data?.forEach(info => {
         const bookInfo = document.createElement('div');
         bookInfo.classList.add('col');
+
         bookInfo.innerHTML =
             `    <div class="card">
             
         <img height="380" src="${info.cover_i ? `${imageURL + info.cover_i}-M.jpg` : `${defaultPic}`}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title my-3 "><span class="fw-bolder">Book:</span> ${info.title}</h5>
-            <h5 class="card-title my-3"><span class="fw-bolder">Author:</span> ${info.author_name[0] ? `${info.author_name[0]}` : `${''}`}${info.author_name[1] ? `, ${info.author_name[1]}` : `${''}`} </h5>
-            <h5 class="card-title my-3"><span class="fw-bolder">Publisher:</span> ${info?.publisher[0] ? `${info.publisher[0]}` : `${''}`}</h5>
+            <h5 class="card-title my-3"><span class="fw-bolder">Author:</span> ${info.author_name[0] ? `${info.author_name[0]}` : `${" "}`}</h5>
+            <h5 class="card-title my-3"><span class="fw-bolder">Publisher:</span> ${info.publisher[0] ? `${info.publisher[0]}` : `${" "}`}</h5>
             <h5 class="card-title my-3"><span class="fw-bolder">First Published:</span> ${info.first_publish_year}</h5>
            
         </div>
