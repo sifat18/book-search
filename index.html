@@ -8,14 +8,45 @@
     <title>Book Archive</title>
 </head>
 <!-- bootstrap css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<!-- custom css -->
+
+<link rel="stylesheet" href="style.css">
 
 <body>
 
-    <header class="container"></header>
-    <main class="container">
+    <header class="container m-5 pt-5">
+        <!-- search box -->
+        <h1 class="text-center text-white fw-bolder mb-5">Your Book is One Search Away!</h1>
+        <div class="input-group mb-3 w-50 mx-auto">
+            <input id="searchText" type="text" class="form-control " placeholder="Search Book" aria-label="Search Book"
+                aria-describedby="searchBtn">
+            <button onclick="getItem()" class="btn btn-outline-secondary bg-warning fw-bolder" type="button"
+                id="searchBtn">Search</button>
+        </div>
+        <!-- spinner -->
+        <div class="text-center mt-3">
+            <span id="updateStatus" class=" text-white fs-5 fw-bolder">Loading...</span>
+        </div>
+    </header>
+
+    <!-- search output -->
+    <main class="container mb-5">
+        <!-- card displays -->
+        <div id="searchResults" class="row row-cols-1 row-cols-md-3 g-4">
+
+        </div>
+
 
     </main>
     <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
 
     <!-- custom js -->
     <script src="app.js"></script>

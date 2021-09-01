@@ -1,0 +1,8 @@
+/* setting the font styles */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+
+/* setting font and background */
+body{
+    font-family: 'Josefin Sans', sans-serif;
+   background-color: #2B7a78;}
