@@ -46,7 +46,7 @@ const getItem = () => {
     searchItem.value = '';
     fetch(url)
         .then(res => res.json())
-        .then(data => data.docs.length === 0 ? statusUpdate(false) : bookData(data.docs));
+        .then(data => data.docs.length === 0 ? statusUpdate(false) : bookData(data));
 
 }
 
@@ -57,7 +57,7 @@ const bookData = (data) => {
     const imageURL = 'https://covers.openlibrary.org/b/id/';
     bookDisplay.textContent = '';
     // looping over the data
-    data?.forEach(info => {
+    data.docs.forEach(info => {
         const bookInfo = document.createElement('div');
         bookInfo.classList.add('col');
 
@@ -75,7 +75,7 @@ const bookData = (data) => {
     </div>
 </div>`
         bookDisplay.appendChild(bookInfo);
-        statusUpdate(true, data.length)
+        statusUpdate(true, data.numFound)
 
 
     }
